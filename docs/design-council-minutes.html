@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>English-Learning Design Council 議事録</title>
+<style>
+  :root {
+    --bg: #0f1115; --panel: #171a21; --border: #262b36;
+    --text: #e7ecf3; --muted: #9aa4b2; --accent: #7cc4ff;
+    --pass: #4ade80; --fail: #f87171; --warn: #fbbf24;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+         background: var(--bg); color: var(--text); line-height: 1.7; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+  h1 { font-size: 28px; border-bottom: 2px solid var(--accent); padding-bottom: 12px; }
+  h2 { font-size: 22px; margin-top: 48px; color: var(--accent); border-left: 4px solid var(--accent); padding-left: 12px; }
+  h3 { font-size: 18px; margin-top: 32px; color: #ffdb91; }
+  h4 { font-size: 16px; margin-top: 24px; color: var(--text); }
+  .meta { color: var(--muted); font-size: 14px; }
+  .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+           padding: 20px 24px; margin: 16px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+  th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: #1f2530; color: var(--accent); font-weight: 600; }
+  .score-pass { color: var(--pass); font-weight: 700; }
+  .score-fail { color: var(--fail); font-weight: 700; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+  .b-high { background: #5b1a1a; color: #fca5a5; }
+  .b-mid  { background: #4a3a10; color: #fcd34d; }
+  .b-low  { background: #1f3a52; color: #93c5fd; }
+  .b-pass { background: #14532d; color: #86efac; }
+  .b-fail { background: #5b1a1a; color: #fca5a5; }
+  ul { padding-left: 22px; } li { margin: 4px 0; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+  .role { font-size: 15px; font-weight: 700; }
+  .toc a { color: var(--accent); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  code { background: #1f2530; padding: 2px 6px; border-radius: 4px; font-size: 90%; }
+  .summary-box { background: linear-gradient(135deg, #14532d22, #0f1115); border-left: 4px solid var(--pass); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>English-Learning Design Council — 議事録</h1>
+<p class="meta">対象設計書: <code>docs/design.md</code> ／ 開催日: 2026-05-20 ／ 合格閾値: 平均スコア 9.0 以上</p>
+
+<div class="panel summary-box">
+  <h3 style="margin-top:0;color:var(--pass);">📋 最終判定: <span class="badge b-pass">合格 (Round 2)</span></h3>
+  <p>初版 v0.1 から v0.2 への改訂サイクル 1 回で全5役割の合格基準を達成。Phase1〜3 のMVP分割、KPI定量化、API/オーケストレーション仕様、セキュリティ章、コスト試算、SRS導入、コールドスタート、UX継続支援の全てが実装可能粒度に到達。</p>
+</div>
+
+<h2>🧑‍🤝‍🧑 評議会メンバー</h2>
+<div class="panel">
+<table>
+  <tr><th>役割</th><th>担当視点</th></tr>
+  <tr><td>🎯 PM</td><td>ユーザー価値・スコープ・優先度・実現可能性</td></tr>
+  <tr><td>🏗️ アーキテクト</td><td>技術的実現性・スケーラビリティ・保守性・技術負債</td></tr>
+  <tr><td>🔒 セキュリティエンジニア</td><td>脆弱性・認証認可・データ保護・リスク</td></tr>
+  <tr><td>🎨 UXデザイナー</td><td>ユーザビリティ・継続性・直感性・学習体験</td></tr>
+  <tr><td>📊 ビジネスアナリスト</td><td>コスト・ROI・運用負荷・継続可能性</td></tr>
+</table>
+</div>
+
+<h2>📊 スコア推移</h2>
+<div class="panel">
+<table>
+  <tr><th>役割</th><th>Round 1</th><th>Round 2</th><th>判定</th></tr>
+  <tr><td>🎯 PM</td><td>7.2</td><td class="score-pass">9.2</td><td><span class="badge b-pass">合格</span></td></tr>
+  <tr><td>🏗️ アーキテクト</td><td>5.5</td><td class="score-pass">9.2</td><td><span class="badge b-pass">合格</span></td></tr>
+  <tr><td>🔒 セキュリティ</td><td>5.5</td><td class="score-pass">9.2</td><td><span class="badge b-pass">合格</span></td></tr>
+  <tr><td>🎨 UX</td><td>6.5</td><td class="score-pass">9.2</td><td><span class="badge b-pass">合格</span></td></tr>
+  <tr><td>📊 ビジネス</td><td>6.5</td><td class="score-pass">9.2</td><td><span class="badge b-pass">合格</span></td></tr>
+  <tr><th>平均</th><th class="score-fail">6.24</th><th class="score-pass">9.20</th><th><span class="badge b-pass">合格</span></th></tr>
+</table>
+</div>
+
+<!-- ============== ROUND 1 ============== -->
+<h2>🔁 Round 1 議事録 — 初版 v0.1 評価</h2>
+<p class="meta">平均: <span class="score-fail">6.24 / 10</span> → 不合格、改訂へ</p>
+
+<div class="panel">
+<h3>🎯 PM (7.2)</h3>
+<h4>良い点</h4>
+<ul>
+  <li>Non-Goals 明示でスコープが個人用localhostに整合</li>
+  <li>3エージェント分割 (Curriculum/Generator/Review) の品質ゲート設計</li>
+  <li>継続支援 (ストリーク・5分ノルマ) がKPI核に直結</li>
+</ul>
+<h4>問題点</h4>
+<ul>
+  <li><span class="badge b-high">高</span> MVPスコープが未定義、優先度・フェーズ分けがない</li>
+  <li><span class="badge b-high">高</span> 成功指標 (KPI) が皆無、「地力UP」が測定不能</li>
+  <li><span class="badge b-high">高</span> コールドスタート時の現在地取得が未設計</li>
+  <li><span class="badge b-mid">中</span> コスト上限の具体値なし、キャッシュ戦略なし</li>
+  <li><span class="badge b-mid">中</span> SRS (間隔反復) への言及なし</li>
+</ul>
+</div>
+
+<div class="panel">
+<h3>🏗️ アーキテクト (5.5)</h3>
+<h4>良い点</h4>
+<ul>
+  <li>レイヤ分離が素直で実装着手しやすい</li>
+  <li>3エージェント分割の責務が直交</li>
+  <li>個人用localhostスコープが過大化していない</li>
+</ul>
+<h4>問題点</h4>
+<ul>
+  <li><span class="badge b-high">高</span> API設計が完全に欠落</li>
+  <li><span class="badge b-high">高</span> エージェントオーケストレーション (順序・リトライ・JSON Schema強制) 未定義</li>
+  <li><span class="badge b-high">高</span> データフロー図がない</li>
+  <li><span class="badge b-high">高</span> テスト戦略が章ごと欠落</li>
+  <li><span class="badge b-mid">中</span> Qdrant採用過剰 (sqlite-vec で十分)</li>
+  <li><span class="badge b-mid">中</span> SQLiteのWAL/マイグレーション/バックアップ未記載</li>
+</ul>
+</div>
+
+<div class="panel">
+<h3>🔒 セキュリティ (5.5)</h3>
+<h4>良い点</h4>
+<ul>
+  <li>非目標明記で攻撃面が限定的</li>
+  <li>ローカルSQLite + Docker Composeで外部露出最小</li>
+  <li>ReviewAgentが品質ゲートの素地</li>
+</ul>
+<h4>問題点</h4>
+<ul>
+  <li><span class="badge b-high">高</span> APIキー管理 (.env/secrets/ログマスキング) 未定義</li>
+  <li><span class="badge b-high">高</span> プロンプトインジェクション対策の欠如</li>
+  <li><span class="badge b-high">高</span> Docker設定の安全性 (ポートバインド/CORS/非root) 未記載</li>
+  <li><span class="badge b-mid">中</span> 学習履歴データ保護・OpenAI送信範囲未定義</li>
+  <li><span class="badge b-mid">中</span> コスト/レート制御 (鍵漏洩時の被害上限) なし</li>
+</ul>
+</div>
+
+<div class="panel">
+<h3>🎨 UX (6.5)</h3>
+<h4>良い点</h4>
+<ul>
+  <li>ストリーク + 5分ノルマで継続ハードルを低設定</li>
+  <li>未習得語の自動ツールチップ訳がフリクション低減</li>
+  <li>ReviewAgentで生成物信頼性をUX側で担保</li>
+</ul>
+<h4>問題点</h4>
+<ul>
+  <li><span class="badge b-high">高</span> 継続動機の設計が薄い (途切れ復帰・達成感の欠落)</li>
+  <li><span class="badge b-high">高</span> 学習開始導線とオンボーディング未定義</li>
+  <li><span class="badge b-mid">中</span> 生成遅延 (2〜10秒) のUX未考慮</li>
+  <li><span class="badge b-mid">中</span> 日本語サポートの粒度・切替UI未設計</li>
+</ul>
+</div>
+
+<div class="panel">
+<h3>📊 ビジネス (6.5)</h3>
+<h4>良い点</h4>
+<ul>
+  <li>非目標明示でスコープ収束</li>
+  <li>gpt-4o-mini + text-embedding-3-small の低コストモデル選定</li>
+  <li>継続支援機能がROIに直結</li>
+</ul>
+<h4>問題点</h4>
+<ul>
+  <li><span class="badge b-high">高</span> コスト試算が皆無、3段エージェントは容易に浪費</li>
+  <li><span class="badge b-high">高</span> Qdrant+Compose 構成は個人用としてオーバーエンジニアリング</li>
+  <li><span class="badge b-mid">中</span> MVP優先順位が未定義</li>
+  <li><span class="badge b-mid">中</span> 生成物キャッシュ戦略なし</li>
+</ul>
+</div>
+
+<!-- ============== ACTIONS ============== -->
+<h2>🛠️ Round 1 → 2 改訂アクション (アーキテクト統合)</h2>
+<div class="panel">
+<ul>
+  <li><strong>§1.3 KPI追加</strong>: 週次継続率 ≥6/7、週30語、月$5</li>
+  <li><strong>§1.4 MVP 3 Phase分割</strong>: Phase1=クイズ+ストリーク / Phase2=長文+日本語3モード / Phase3=マップ可視化</li>
+  <li><strong>§2 技術スタック</strong>: Qdrant廃止 → sqlite-vec、goose導入</li>
+  <li><strong>§3.1 シーケンス図</strong>: Curriculum→Generator→Review→キャッシュ→SSE返却</li>
+  <li><strong>§4.1 オンボーディング</strong>: CEFR自己申告 + 20問プレースメント</li>
+  <li><strong>§4.3 エージェント仕様表</strong>: 入出力・失敗時挙動・JSON Schema強制・10%サンプリングReview</li>
+  <li><strong>§4.4 SRS (SM-2)</strong> 導入、attempts に next_review_at, ease_factor 追加</li>
+  <li><strong>§4.6 UX継続</strong>: 巨大CTA、前夜バッチ事前生成、リカバリーチケット</li>
+  <li><strong>§5 データモデル拡張</strong>: users(単一行), generated_content, word_vec, tokens_used</li>
+  <li><strong>§6 API一覧</strong>: 6エンドポイント + RFC 7807エラー形式</li>
+  <li><strong>§7 セキュリティ章新設</strong>: シークレット/ポート/非root/暗号化BK/インジェクション対策/usage limit</li>
+  <li><strong>§8 コスト試算</strong>: 日30k tokens, 月$5 hard limit, キャッシュ60%目標</li>
+  <li><strong>§9 テスト戦略</strong>: Go test / ゴールデン / LLM-as-judge / Playwright</li>
+  <li><strong>§10 運用</strong>: sqlite .backup + age暗号化, goose自動適用, JSON構造化ログ</li>
+</ul>
+</div>
+
+<!-- ============== ROUND 2 ============== -->
+<h2>🔁 Round 2 議事録 — 改訂版 v0.2 評価</h2>
+<p class="meta">平均: <span class="score-pass">9.20 / 10</span> → 合格</p>
+
+<div class="panel">
+<h3>🎯 PM (9.2 ✅)</h3>
+<p><strong>評価:</strong> MVP分割が明確化し2週間で稼働可能なスコープに収束。KPI定量化とコスト試算が整合。コールドスタート＆SRS導入でパーソナライズの欠落ピースが埋まった。</p>
+<p><strong>残課題:</strong> KPI未達時のフィードバックループ、Phase移行条件、TTS判断基準の明示。</p>
+</div>
+
+<div class="panel">
+<h3>🏗️ アーキテクト (9.2 ✅)</h3>
+<p><strong>評価:</strong> Qdrant→sqlite-vec で依存削減・単一バイナリ運用可。エージェントI/Oが実装可能粒度。API一覧・テスト戦略・コスト試算が揃い設計の穴がほぼ埋まった。</p>
+<p><strong>残課題:</strong> SSE再接続/resume token、generated_content.hash の生成元定義、SM-2初期値とdifficulty_profile JSON Schema、observability。</p>
+</div>
+
+<div class="panel">
+<h3>🔒 セキュリティ (9.2 ✅)</h3>
+<p><strong>評価:</strong> §7独立章でシークレット/ポート/コンテナ/データ保護/インジェクション/コスト/依存管理が体系化。鍵漏洩時の被害上限あり。</p>
+<p><strong>残課題:</strong> SSE/CORS Origin検証、ユーザー入力含む生成は100%レビュー、hash定義に schema_ver/model 追加、age鍵管理場所。</p>
+</div>
+
+<div class="panel">
+<h3>🎨 UX (9.2 ✅)</h3>
+<p><strong>評価:</strong> オンボーディングで初日からパーソナライズ起動、前夜バッチ+SSEでゼロ待機、日本語3モード+リカバリーチケットで継続動機が多層化。</p>
+<p><strong>残課題:</strong> Phase1の即時報酬演出、SSE中のプレースホルダ表現、20問プレースメントの中断再開、リカバリーチケット上限設計。</p>
+</div>
+
+<div class="panel">
+<h3>📊 ビジネス (9.2 ✅)</h3>
+<p><strong>評価:</strong> KPI＋月$5 hard limit でROI測定可能、キャッシュ60%＋日次上限でコスト暴走を構造的に防止。</p>
+<p><strong>残課題:</strong> Phase2/3着手のGate条件、コーパス取り込みの初回コスト計上、ネットマップ可視化のROI再評価条件。</p>
+</div>
+
+<!-- ============== FINAL ============== -->
+<h2>✅ 最終結論</h2>
+<div class="panel summary-box">
+<h3 style="margin-top:0;">主要決定事項</h3>
+<ul>
+  <li><strong>MVPはPhase1のみ</strong>を2週間で実装着手 — クイズ + ストリーク + 履歴 + オンボーディング</li>
+  <li><strong>技術スタック確定</strong>: Go (chi) + React (Vite+TS) + SQLite + sqlite-vec + OpenAI gpt-4o-mini</li>
+  <li><strong>コスト上限</strong>: 月 $5 hard limit、日次30k tokens、キャッシュヒット率60%目標</li>
+  <li><strong>セキュリティ</strong>: <code>127.0.0.1</code>限定バインド、非rootコンテナ、JSON Schema+タグ分離でインジェクション防御、age暗号化BK</li>
+  <li><strong>パーソナライズ</strong>: SM-2 SRS + 20問プレースメントで Day1 から起動</li>
+  <li><strong>継続UX</strong>: 巨大CTA + 前夜バッチ生成 + リカバリーチケット</li>
+</ul>
+
+<h3>残課題 (Phase1着手と並行して詰める)</h3>
+<ul>
+  <li>SSEイベントスキーマ・resume token 仕様化</li>
+  <li>generated_content.hash = sha256(model || schema_ver || prompt_inputs) と prompt_version 列追加</li>
+  <li>CORS allowlist (<code>http://127.0.0.1:5173</code>) と Origin/Referer 検証</li>
+  <li>各Phase移行Gate条件 (例: 週6日継続×2週連続 → Phase2)</li>
+  <li>Phase1での即時報酬マイクロ演出 (語点灯/+XP)</li>
+  <li>observability: トークン日次・キャッシュヒット率・p95レイテンシのログ規定</li>
+</ul>
+</div>
+
+<p class="meta" style="margin-top:48px;text-align:center;">— English-Learning Design Council, Round 2 終了 —</p>
+
+</div>
+</body>
+</html>

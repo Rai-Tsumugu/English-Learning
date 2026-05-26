@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Day5 — 7名による Day4設計書 評価会議</title>
+<style>
+  :root {
+    --bg:#0f1115; --panel:#171a21; --border:#262b36;
+    --text:#e7ecf3; --muted:#9aa4b2; --accent:#7cc4ff;
+    --pass:#4ade80; --mid:#fbbf24; --fail:#f87171;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+       background:var(--bg);color:var(--text);line-height:1.7}
+  .wrap{max-width:1000px;margin:0 auto;padding:40px 24px}
+  h1{font-size:28px;border-bottom:2px solid var(--accent);padding-bottom:12px}
+  h2{font-size:22px;margin-top:48px;color:var(--accent);border-left:4px solid var(--accent);padding-left:12px}
+  h3{font-size:18px;margin-top:24px;color:#ffdb91}
+  h4{font-size:15px;margin-top:18px;color:var(--text)}
+  .meta{color:var(--muted);font-size:14px}
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:10px;
+         padding:20px 24px;margin:16px 0}
+  table{width:100%;border-collapse:collapse;margin:12px 0}
+  th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+  th{background:#1f2530;color:var(--accent);font-weight:600}
+  .s-pass{color:var(--pass);font-weight:700}
+  .s-mid{color:var(--mid);font-weight:700}
+  .s-fail{color:var(--fail);font-weight:700}
+  .badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600}
+  .b-pass{background:#14532d;color:#86efac}
+  .b-mid{background:#4a3a10;color:#fcd34d}
+  .b-fail{background:#5b1a1a;color:#fca5a5}
+  ul{padding-left:22px}li{margin:4px 0}
+  code{background:#1f2530;padding:2px 6px;border-radius:4px;font-size:90%}
+  .summary-box{background:linear-gradient(135deg,#1f253022,#0f1115);border-left:4px solid var(--accent)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (max-width:720px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Day5 — 7名チームによる Day4設計書 評価会議</h1>
+<p class="meta">対象: <code>docs/design.md</code> v0.2 ／ 評価日: 2026-05-21 ／ 評価者: 7専門家（事前市場調査済み）</p>
+
+<div class="panel summary-box">
+<h3 style="margin-top:0;">📋 総合判定: <span class="badge b-mid">条件付きGo (平均 7.14 / 10)</span></h3>
+<p>目標「毎日続けて英語の地力をつける個人用システム」は<strong>技術的・経済的に達成可能</strong>と全員が同意。一方、英語講師の懸念（運用力獲得不足）が最低スコア6を付け、コロケーション・音韻面・意味干渉対策・FSRS移行などが「やれば9点台」の伸びしろとして残る。</p>
+</div>
+
+<h2>🧑‍🤝‍🧑 評価チーム（7名）</h2>
+<div class="panel">
+<table>
+  <tr><th>#</th><th>役割</th><th>主な調査領域</th></tr>
+  <tr><td>01</td><td>🎯 マーケター</td><td>市場規模・競合・ポジショニング</td></tr>
+  <tr><td>02</td><td>🏗️ プログラマ</td><td>sqlite-vec / Go chi+SSE / OpenAI SDK / Docker</td></tr>
+  <tr><td>03</td><td>📚 英語講師</td><td>CEFR・5分学習・SRS実証・日本人弱点</td></tr>
+  <tr><td>04</td><td>📦 OSSデータアナリスト</td><td>NGSL/CEFR-J/Tatoeba 等のライセンス</td></tr>
+  <tr><td>05</td><td>🎨 UXリサーチャー</td><td>継続率・ストリーク心理・通知</td></tr>
+  <tr><td>06</td><td>🤖 AIエンジニア</td><td>gpt-4o-mini・Structured Outputs・Batch API</td></tr>
+  <tr><td>07</td><td>🧪 学習科学研究者</td><td>SRS・Testing Effect・CAT・interleaving</td></tr>
+</table>
+</div>
+
+<h2>📊 スコア集計</h2>
+<div class="panel">
+<table>
+  <tr><th>役割</th><th>スコア</th><th>主要懸念</th><th>判定</th></tr>
+  <tr><td>マーケター</td><td class="s-pass">7</td><td>「地力」定義／ネットマップPhase3後ろ倒し／キャッシュ60%生命線</td><td><span class="badge b-pass">Go</span></td></tr>
+  <tr><td>プログラマ</td><td class="s-pass">8</td><td>sqlite-vec alpha／SSE実装罠／プレースメント動的生成リスク</td><td><span class="badge b-pass">Go</span></td></tr>
+  <tr><td>英語講師</td><td class="s-fail">6</td><td>意味干渉／コロケーション欠落／音韻面欠落／CEFR進捗不可視</td><td><span class="badge b-fail">要改訂</span></td></tr>
+  <tr><td>OSSデータ</td><td class="s-pass">7</td><td>COCA再配布リスク／source列欠落／LICENSES同梱なし</td><td><span class="badge b-pass">Go</span></td></tr>
+  <tr><td>UX</td><td class="s-pass">7</td><td>ストリーク形式未定義／過負荷ブレーカ欠如／通知戦略なし</td><td><span class="badge b-pass">Go</span></td></tr>
+  <tr><td>AIエンジニア</td><td class="s-pass">8</td><td>Reviewer self-bias／CEFR few-shot未定義／answer_span未強制</td><td><span class="badge b-pass">Go</span></td></tr>
+  <tr><td>学習科学</td><td class="s-pass">7</td><td>SM-2 (FSRS-5 比劣化)／CAT未較正／interleaving未制御</td><td><span class="badge b-pass">Go</span></td></tr>
+  <tr><th>平均</th><th class="s-mid">7.14</th><th>達成可能だが7名中6名が改訂提案を残す</th><th><span class="badge b-mid">条件付きGo</span></th></tr>
+</table>
+</div>
+
+<!-- ============== 各人の発言 ============== -->
+<h2>🗣️ 個別評価議事録</h2>
+
+<div class="panel">
+<h3>🎯 マーケター — 7/10</h3>
+<h4>強み</h4>
+<ul>
+  <li>「個人用・低コスト・自律生成・統合型」は未開拓セグメント、商用と機能戦争にならない</li>
+  <li>JSON Schema強制＋10%サンプリングReviewはハルシネーション対策の正解パターン</li>
+  <li>巨大CTA・前夜事前生成・リカバリーチケットがストリーク依存を補完</li>
+</ul>
+<h4>弱み</h4>
+<ul>
+  <li><strong>「英語の地力」未定義</strong>（§1.1）。スピーキング/発音スコープ外が明文化されておらずKPI軸ぶれ</li>
+  <li>差別化の核（ネットマップ）がPhase3で価値検証できない</li>
+  <li>$5上限はキャッシュ60%が前提。未達時のフォールバックが弱い</li>
+</ul>
+<h4>改訂提案</h4>
+<ul>
+  <li>§1.1 を「読む・語彙・文法の地力」と明記、スピーキング/発音は§1.2 非目標へ</li>
+  <li>§1.4 Phase1に「簡易ネットマップ（関連語5件リスト）」を前倒し</li>
+  <li>§8 にキャッシュ未達時の段階的縮退表（Review停止→静的教材→生成停止）追加</li>
+</ul>
+</div>
+
+<div class="panel">
+<h3>🏗️ プログラマ — 8/10</h3>
+<h4>強み</h4>
+<ul>
+  <li>Qdrant廃止 + sqlite-vec採用は個人用localhost規模に合致</li>
+  <li>Curriculum→Generator→Review直列 + JSON Schema強制は Responses API + Structured Outputs で素直に実装可能</li>
+  <li>Dev=Compose / 常用=単一バイナリ のハイブリッド方針が静的Goと整合</li>
+</ul>
+<h4>弱み</h4>
+<ul>
+  <li><strong>sqlite-vec が alpha</strong>であること・KNN制約・Goバインディング選定が未記載</li>
+  <li>SSE実装の必須要件（Flusher・heartbeat・X-Accel-Buffering）未記述</li>
+  <li>プレースメント20問の動的生成は捏造idiom混入で初期プロファイルが歪む</li>
+</ul>
+<h4>改訂提案</h4>
+<ul>
+  <li>§2 に「sqlite-vec 0.1.7-alpha / Goドライバ=<code>modernc.org/sqlite</code>+<code>modernc.org/sqlite/vec</code>」明記、§11残課題に alpha 監視追加</li>
+  <li>§3.1 に <code>internal/sse</code> パッケージで <code>plan/question/done</code> 3イベントへ正規化を追記</li>
+  <li>§4.1 を「静的問題バンク（人手レビュー済み）使用、動的生成しない」に改訂。§4.3 Review表に 10%→20%→40%自動昇格サーキット追加</li>
+</ul>
+</div>
+
+<div class="panel" style="border-left:4px solid var(--fail);">
+<h3>📚 英語講師 — 6/10 ⚠️ 最低スコア</h3>
+<h4>強み</h4>
+<ul>
+  <li>SM-2採用は実証十分・実装容易（Wozniak長期試験で保持92%）</li>
+  <li>NGSL + sqlite-vec は頻度上位語の定着基盤として教育学的に正解</li>
+  <li>前夜バッチ生成 + 巨大CTA はモバイル学習研究の知見と一致</li>
+</ul>
+<h4>弱み</h4>
+<ul>
+  <li><strong>意味的近接語の同時導入リスク</strong>: 関連語を新規出題に使うと Tinkham 干渉効果（学習試行+50%）</li>
+  <li>コロケーション・音韻面の欠落（日本人EFL主要弱点）。Phase2長文だけでは頭打ち</li>
+  <li>CEFR進捗の不可視。週30語KPIあるが「目標CEFRまでの残語数」がなく年単位の現実感ゼロ</li>
+</ul>
+<h4>改訂提案</h4>
+<ul>
+  <li>Curriculum Agent に <strong>distinctiveness optimizer</strong> 明記。ネットマップは復習・可視化専用に限定</li>
+  <li><code>examples.collocation</code> 列追加、Generator に高頻度コロケート2つ必須出力。1日1文 TTS シャドウイング枠を残課題から昇格</li>
+  <li>ダッシュボードに「累積分/週」「現在語彙→目標CEFR残語数」表示。lapse時 ease 下限1.3、1日新規語上限10–15を明記</li>
+</ul>
+</div>
+
+<div class="panel">
+<h3>📦 OSSデータアナリスト — 7/10</h3>
+<h4>強み</h4>
+<ul>
+  <li>gpt-4o-mini + sqlite-vec + キャッシュ60% で $5/月 の現実性高い</li>
+  <li>SRS + JSON Schema + Reviewサンプリング で品質と継続性が両立</li>
+  <li>Phase分割が明快、Phase1 2週間スコープが妥当</li>
+</ul>
+<h4>弱み</h4>
+<ul>
+  <li>§4.2 が「NGSL/COCA取り込み」と記載しており <strong>COCA再配布不可リスク</strong> を内包</li>
+  <li><code>words/examples</code> に <code>source</code>/<code>attribution</code> 列がなく出典追跡不能</li>
+  <li>例文最低3保証のシード（Tatoeba/Tanaka）と不足時の Generator 委譲ロジック未定義</li>
+</ul>
+<h4>改訂提案</h4>
+<ul>
+  <li>§4.2 「COCA」→「CEFR-J + Octanove C1/C2」に置換、COCAは頻度参照のみと明記</li>
+  <li>§5 に <code>words.source</code>, <code>examples.source</code>, <code>examples.attribution</code> 追加。CC BY-SA 伝播回避のため <code>vocab.db</code>/<code>app.db</code> 分離</li>
+  <li>§2/§10 に <code>data/sources/LICENSES/</code> 同梱と起動時ライセンス整合性チェック追加</li>
+</ul>
+</div>
+
+<div class="panel">
+<h3>🎨 UXリサーチャー — 7/10</h3>
+<h4>強み</h4>
+<ul>
+  <li>巨大CTA + 前夜バッチで「朝ゼロ待機」、即時性原則に合致</li>
+  <li>リカバリーチケットで all-or-nothing 離脱を抑制</li>
+  <li>SRS + 苦手重み付け + ネットマップ点灯で達成感の即時化素地</li>
+</ul>
+<h4>弱み</h4>
+<ul>
+  <li>ストリーク表示形式が未定義。連続日数カウンタだと1日途切れで全放棄リスク</li>
+  <li>過負荷サーキットブレーカー記述なし（Anki 50枚問題と同型破綻リスク）</li>
+  <li>通知/ambient cue 戦略 docs 欠落、起動導線がユーザー意思のみに依存</li>
+  <li>Dogfooding 盲点を検知する仕組み未設計</li>
+</ul>
+<h4>改訂提案</h4>
+<ul>
+  <li>§4.6 に「週7マス可視化」「月2枚自動付与チケット」「正解時マイクロ報酬（点灯+音+次回日表示）」明記</li>
+  <li>SRS未消化3日分超で新規語投入自動停止を Curriculum 制約に追加</li>
+  <li>macOS <code>launchd</code> ambient cue + 週次レポート「詰まった瞬間」自由記述欄を運用要件化</li>
+</ul>
+</div>
+
+<div class="panel">
+<h3>🤖 AIエンジニア — 8/10</h3>
+<h4>強み</h4>
+<ul>
+  <li>JSON Schema強制 + 再試行2回 は Structured Outputs 99.9%準拠と整合</li>
+  <li>3エージェント分業 + 10%サンプリングReview のコスト/品質バランスが妥当</li>
+  <li>生成キャッシュ(hash) + 前夜23時バッチ は Batch API(50%OFF) + プロンプトキャッシュで月予算1桁圧縮余地</li>
+</ul>
+<h4>弱み</h4>
+<ul>
+  <li><strong>Reviewer self-bias</strong>: Generator/Reviewerが同一 gpt-4o-mini だと style bias 0.76-0.92 で検出力低下</li>
+  <li>CEFR 厳密制御の few-shot 固定方針が未記載、難易度ブレ発生</li>
+  <li>読解の正答根拠検証（answer_span 照合）が設計欠落</li>
+</ul>
+<h4>改訂提案</h4>
+<ul>
+  <li>Reviewer を別系統化（gpt-4o or 別プロンプト + ルーブリック4段階 + 理由必須）。新形式初出時は100%レビュー</li>
+  <li>Batch API + プロンプトキャッシュを正式採用、共通プレフィックス固定で月 $1 以下に再設定、浮いた予算を Review 強化へ</li>
+  <li>Generator 出力に <code>answer_span</code>/<code>cefr_evidence</code> 必須化、Review で機械照合</li>
+</ul>
+</div>
+
+<div class="panel">
+<h3>🧪 学習科学研究者 — 7/10</h3>
+<h4>強み</h4>
+<ul>
+  <li>Testing Effect ◎: 4択+latency記録+Review解説が想起練習に合致（g≈0.5–0.6）</li>
+  <li>Elaboration ◎: 例文3つ・ネットマップ近傍語・ツールチップ訳が深い意味処理を誘導</li>
+  <li>autonomy 配慮: リカバリーチケットが SDT undermining effect を緩和</li>
+</ul>
+<h4>弱み</h4>
+<ul>
+  <li><strong>SRS が SM-2</strong>: FSRS-5 比で同保持率にレビュー20–30%増、ease hell 残存</li>
+  <li>CAT の較正欠落: IRTパラメータ・SEM停止規準・自己申告統合方針未定義</li>
+  <li>Interleaving / semantic interference 未制御。Curriculum に混在制約なし、近傍語同時出題で30–50%効率低下リスク</li>
+</ul>
+<h4>改訂提案</h4>
+<ul>
+  <li><code>attempts</code> に <code>stability/difficulty/lapses</code> 列を先行追加し Phase2 で FSRS-5 移行可能化、desired retention を profile 化</li>
+  <li>Curriculum プロンプトに「品詞/意味カテゴリ/CEFR 混在」「類義語同時出題禁止」制約。A1–A2は初回blocked→2回目interleaved のハイブリッド</li>
+  <li>CAT を IRT 化: 項目バンクに a/b パラメータ事前付与、SEM≤0.3 or 20問の二重停止規準、CEFR自己申告をベイズ事前分布として活用。産出型タスク（タイピング/和→英）一部混在</li>
+</ul>
+</div>
+
+<!-- ============== クロス論点 ============== -->
+<h2>🔀 横断論点（複数人が同方向で指摘）</h2>
+<div class="panel">
+<table>
+  <tr><th>論点</th><th>指摘者</th><th>結論</th></tr>
+  <tr><td>意味干渉 / ネットマップを新規出題に使うリスク</td><td>英語講師・学習科学</td><td>Curriculum に <strong>類義語同時出題禁止</strong> 制約を明記。ネットマップは復習・可視化用に限定</td></tr>
+  <tr><td>プレースメント / CAT の精度</td><td>プログラマ・学習科学</td><td>動的生成→<strong>静的問題バンク（人手レビュー済）</strong>。IRT a/b パラメータ事前付与</td></tr>
+  <tr><td>Reviewer self-bias</td><td>AIエンジニア</td><td>Generator と別系統（gpt-4o or 別プロンプト）に切替え</td></tr>
+  <tr><td>SRS の世代交代（SM-2→FSRS-5）</td><td>学習科学</td><td><code>attempts</code> に stability/difficulty/lapses 列を Phase1 から仕込んで Phase2 で移行</td></tr>
+  <tr><td>コスト・キャッシュ未達時の縮退</td><td>マーケター・AIエンジニア</td><td>Batch API + プロンプトキャッシュで月$1以下に圧縮、縮退表で安全装置</td></tr>
+  <tr><td>ライセンス管理（CC BY-SA 4.0 / COCA / Oxford）</td><td>OSSデータ</td><td>COCA記載削除、source/attribution 列追加、vocab.db / app.db 分離</td></tr>
+  <tr><td>継続UX の精度（過負荷・通知・dogfooding）</td><td>UX</td><td>週7マス可視化、未消化3日で新規停止、launchd cue、摩擦ログ欄</td></tr>
+</table>
+</div>
+
+<!-- ============== 最終結論 ============== -->
+<h2>✅ Day5 最終結論</h2>
+<div class="panel summary-box">
+<h3 style="margin-top:0;">目標達成可能性: 条件付きGo (7.14 / 10)</h3>
+<p>個人用localhost英語学習サイトとして、Phase1の2週間稼働・月$5予算・週6/7継続KPI は <strong>技術・コスト・市場の3軸で達成可能</strong>。一方で「英語の地力」獲得の質を高めるには以下7改訂を v0.3 に取り込むことが必須・推奨される。</p>
+
+<h3>必須改訂（最低限 Phase1 着手前）</h3>
+<ol>
+  <li><strong>§1.1 目的を「読む・語彙・文法」に限定</strong>、スピーキング/発音を §1.2 非目標へ（マーケター）</li>
+  <li><strong>Curriculum に類義語同時出題禁止 / 意味カテゴリ混在制約</strong>を明記（英語講師・学習科学）</li>
+  <li><strong>プレースメントを静的問題バンク化</strong>、動的生成を禁止（プログラマ）</li>
+  <li><strong>COCA記載削除＋source/attribution 列追加</strong>、vocab.db / app.db 分離（OSSデータ）</li>
+</ol>
+
+<h3>強推奨改訂（Phase1 内に追加）</h3>
+<ol start="5">
+  <li><strong>Reviewer を別モデル系統化</strong>（gpt-4o 等）＋ <code>answer_span</code> 必須化（AIエンジニア）</li>
+  <li><strong>attempts に stability/difficulty/lapses 列を先行追加</strong>し Phase2 で FSRS-5 移行可能化（学習科学）</li>
+  <li><strong>§4.6 UX 詳細化</strong>: 週7マス可視化・月2枚自動チケット・SRS未消化3日で新規停止・launchd ambient cue（UX）</li>
+</ol>
+
+<h3>Phase1 着手後の伸びしろ</h3>
+<ul>
+  <li>Batch API + プロンプトキャッシュで月予算を $1 以下に圧縮 → Review 拡張原資に転用</li>
+  <li>コロケーション必須化＋TTS シャドウイング枠（残課題から昇格）</li>
+  <li>ダッシュボードに「目標CEFRまでの残語数」表示</li>
+  <li>週次レポートに「詰まった瞬間」自由記述欄（dogfooding 盲点検知）</li>
+</ul>
+</div>
+
+<p class="meta" style="margin-top:48px;text-align:center;">— Day5 評価会議 終了 ／ 次フェーズ: v0.3 改訂 —</p>
+
+</div>
+</body>
+</html>
