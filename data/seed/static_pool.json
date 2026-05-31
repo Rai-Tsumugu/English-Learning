@@ -1,0 +1,104 @@
+{
+  "items": [
+    {
+      "question_type": "mcq",
+      "prompt": "She ____ to school every day.",
+      "choices": ["go", "goes", "going", "gone"],
+      "answer_index": 1,
+      "answer_span": "goes",
+      "cefr_evidence": "Present simple, third person singular.",
+      "target_lemma": "go",
+      "cefr": "A1"
+    },
+    {
+      "question_type": "mcq",
+      "prompt": "There ____ a book on the table.",
+      "choices": ["is", "are", "be", "am"],
+      "answer_index": 0,
+      "answer_span": "is",
+      "cefr_evidence": "Singular subject 'a book' takes 'is'.",
+      "target_lemma": "be",
+      "cefr": "A1"
+    },
+    {
+      "question_type": "mcq",
+      "prompt": "I ____ pizza last night.",
+      "choices": ["eat", "eats", "ate", "eating"],
+      "answer_index": 2,
+      "answer_span": "ate",
+      "cefr_evidence": "Past simple of 'eat'.",
+      "target_lemma": "eat",
+      "cefr": "A2"
+    },
+    {
+      "question_type": "cloze",
+      "prompt": "If it rains tomorrow, we ____ stay home.",
+      "choices": ["will", "would", "are", "have"],
+      "answer_index": 0,
+      "answer_span": "will",
+      "cefr_evidence": "First conditional uses 'will' in the main clause.",
+      "target_lemma": "will",
+      "cefr": "A2"
+    },
+    {
+      "question_type": "mcq",
+      "prompt": "He has ____ in this city since 2010.",
+      "choices": ["live", "lived", "living", "lives"],
+      "answer_index": 1,
+      "answer_span": "lived",
+      "cefr_evidence": "Present perfect with 'since'.",
+      "target_lemma": "live",
+      "cefr": "B1"
+    },
+    {
+      "question_type": "mcq",
+      "prompt": "The report must ____ by Friday.",
+      "choices": ["submit", "submitted", "be submitted", "submitting"],
+      "answer_index": 2,
+      "answer_span": "be submitted",
+      "cefr_evidence": "Modal + passive infinitive.",
+      "target_lemma": "submit",
+      "cefr": "B1"
+    },
+    {
+      "question_type": "cloze",
+      "prompt": "I wish I ____ more time to read books.",
+      "choices": ["have", "had", "having", "has"],
+      "answer_index": 1,
+      "answer_span": "had",
+      "cefr_evidence": "'I wish' + past simple for present unreal wish.",
+      "target_lemma": "wish",
+      "cefr": "B2"
+    },
+    {
+      "question_type": "mcq",
+      "prompt": "Despite ____ tired, she finished the marathon.",
+      "choices": ["be", "being", "to be", "been"],
+      "answer_index": 1,
+      "answer_span": "being",
+      "cefr_evidence": "'Despite' is followed by a gerund.",
+      "target_lemma": "despite",
+      "cefr": "B2"
+    },
+    {
+      "question_type": "mcq",
+      "prompt": "Had I known earlier, I ____ acted differently.",
+      "choices": ["will have", "would have", "would", "had"],
+      "answer_index": 1,
+      "answer_span": "would have",
+      "cefr_evidence": "Inverted third conditional.",
+      "target_lemma": "know",
+      "cefr": "C1"
+    },
+    {
+      "question_type": "cloze",
+      "prompt": "The proposal was met with ____ skepticism from the committee.",
+      "choices": ["considerable", "consider", "considered", "considering"],
+      "answer_index": 0,
+      "answer_span": "considerable",
+      "cefr_evidence": "Adjective modifying the noun 'skepticism'.",
+      "target_lemma": "considerable",
+      "cefr": "C1"
+    }
+  ]
+}

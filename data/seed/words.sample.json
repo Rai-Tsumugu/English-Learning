@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "source": "self-authored sample (Phase1 暫定)",
+  "note": "本番では NGSL/CEFR-J/Octanove を data/source/ に配置して再生成する。",
+  "items": [
+    {"lemma": "book",       "cefr": "A1", "freq_rank":   50, "pos": "n",   "gloss_ja": "本"},
+    {"lemma": "read",       "cefr": "A1", "freq_rank":   80, "pos": "v",   "gloss_ja": "読む"},
+    {"lemma": "yesterday",  "cefr": "A1", "freq_rank":  300, "pos": "adv", "gloss_ja": "昨日"},
+    {"lemma": "house",      "cefr": "A1", "freq_rank":  120, "pos": "n",   "gloss_ja": "家"},
+    {"lemma": "friend",     "cefr": "A1", "freq_rank":  150, "pos": "n",   "gloss_ja": "友達"},
+    {"lemma": "borrow",     "cefr": "A2", "freq_rank":  900, "pos": "v",   "gloss_ja": "借りる"},
+    {"lemma": "invite",     "cefr": "A2", "freq_rank":  950, "pos": "v",   "gloss_ja": "招待する"},
+    {"lemma": "decide",     "cefr": "A2", "freq_rank":  600, "pos": "v",   "gloss_ja": "決める"},
+    {"lemma": "weather",    "cefr": "A2", "freq_rank":  720, "pos": "n",   "gloss_ja": "天気"},
+    {"lemma": "exercise",   "cefr": "A2", "freq_rank":  680, "pos": "n",   "gloss_ja": "運動・練習"},
+    {"lemma": "argue",      "cefr": "B1", "freq_rank": 1800, "pos": "v",   "gloss_ja": "議論する"},
+    {"lemma": "improve",    "cefr": "B1", "freq_rank": 1200, "pos": "v",   "gloss_ja": "改善する"},
+    {"lemma": "consider",   "cefr": "B1", "freq_rank":  900, "pos": "v",   "gloss_ja": "考慮する"},
+    {"lemma": "manage",     "cefr": "B1", "freq_rank": 1500, "pos": "v",   "gloss_ja": "管理する・なんとかやる"},
+    {"lemma": "purpose",    "cefr": "B1", "freq_rank": 1700, "pos": "n",   "gloss_ja": "目的"},
+    {"lemma": "acknowledge","cefr": "B2", "freq_rank": 3500, "pos": "v",   "gloss_ja": "認める"},
+    {"lemma": "comprehensive","cefr":"B2","freq_rank": 4200, "pos": "adj", "gloss_ja": "包括的な"},
+    {"lemma": "subsequent", "cefr": "B2", "freq_rank": 4500, "pos": "adj", "gloss_ja": "その後の"},
+    {"lemma": "elaborate",  "cefr": "C1", "freq_rank": 6800, "pos": "v",   "gloss_ja": "詳述する"},
+    {"lemma": "intricate",  "cefr": "C1", "freq_rank": 8200, "pos": "adj", "gloss_ja": "複雑な"}
+  ]
+}

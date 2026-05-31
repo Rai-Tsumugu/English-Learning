@@ -1,0 +1,39 @@
+# Go
+*.exe
+*.test
+*.out
+/bin/
+/dist/
+vendor/
+
+# Node
+node_modules/
+web/dist/
+.npm/
+
+# Env
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# DB
+*.db
+*.db-shm
+*.db-wal
+/data/app.db
+/data/vocab.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# Logs
+*.log
+/logs/
+
+# Cache
+.cache/
+.parcel-cache/
